@@ -26653,7 +26653,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t Matrix4x4_GetHashCode_m31
 		return ((int32_t)(((int32_t)(((int32_t)(L_1^((int32_t)(L_3<<2))))^((int32_t)(L_5>>2))))^((int32_t)(L_7>>1))));
 	}
 }
-// Method Definition Index: 68693
+// Method Definition Index: 68695
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool NetworkBehaviourId_Equals_m86C337A20E9981536B5ACD98FCB8758B99559F55_inline (NetworkBehaviourId_tB7569FC690A65B12D926BA5ECF5F04D0C5A4E0D3* __this, NetworkBehaviourId_tB7569FC690A65B12D926BA5ECF5F04D0C5A4E0D3 ___0_other, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -26701,7 +26701,7 @@ IL_0028:
 		return L_7;
 	}
 }
-// Method Definition Index: 70112
+// Method Definition Index: 70114
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool NetworkId_Equals_mC59CE14231EA612D6AF7A8B0DE2EB0DDB9FDE00B_inline (NetworkId_t55BD78F35465C7B51581907AC1DB01F8568237F2* __this, NetworkId_t55BD78F35465C7B51581907AC1DB01F8568237F2 ___0_other, const RuntimeMethod* method) 
 {
 	bool V_0 = false;

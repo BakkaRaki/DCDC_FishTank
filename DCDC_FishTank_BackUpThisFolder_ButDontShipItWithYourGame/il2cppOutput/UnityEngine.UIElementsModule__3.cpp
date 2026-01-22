@@ -32517,7 +32517,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Rect_set_y_mDE91F4B98A6E8623
 		return;
 	}
 }
-// Method Definition Index: 106130
+// Method Definition Index: 106132
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR String_t* TextEditingUtilities_get_text_m8E623B01EE01F680BCE9E1BDBADECE0512F9D543_inline (TextEditingUtilities_t7279815C2EE99F0C120561FE10638B57BE2E838D* __this, const RuntimeMethod* method) 
 {
 	{

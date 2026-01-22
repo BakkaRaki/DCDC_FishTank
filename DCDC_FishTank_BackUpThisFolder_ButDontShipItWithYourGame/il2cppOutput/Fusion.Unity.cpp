@@ -13386,7 +13386,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR CultureInfo_t9BA817D41AD55AC8BD07480DD8AC22F8
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 98275
+// Method Definition Index: 98277
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FusionStatsGraphBase__cctor_mE4B39E5B5854EE901556B63E47F4E1F76DBDF01D (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
