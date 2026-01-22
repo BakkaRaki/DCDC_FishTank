@@ -1,0 +1,91 @@
+﻿#include "pch-c.h"
+
+
+#include "codegen/il2cpp-codegen-metadata.h"
+
+
+
+
+
+extern void BasicSpawner_PlayerJoined_m965398F6BAC08930B56FA5CF8A9CE095CA8100F5 (void);
+extern void BasicSpawner__ctor_m1BFE260F3BBE86328E5F069D2CEB63DDB9660EFE (void);
+extern void ConnectionManager_OnStartHostClicked_mA9BAA0ECEA8FD238977FCCC5E7088920821997B1 (void);
+extern void ConnectionManager_OnJoinClientClicked_m953CCE45A9E8C109C7BCADFB594BDEFA51171458 (void);
+extern void ConnectionManager_StartGame_m1C56154B6A53A32E84C78F61B568BB60DEBFD9FC (void);
+extern void ConnectionManager__ctor_mEF06619535EA80CC53733FDBAFCD54A8CC73495B (void);
+extern void U3CStartGameU3Ed__5_MoveNext_mF0BA34D4C102637CD9AF29A9B0FCD118AC80C325 (void);
+extern void U3CStartGameU3Ed__5_SetStateMachine_m680B4B6EB442F4F4BC880DA83C47D7925B237CB1 (void);
+extern void RoomStatusDisplay_FixedUpdateNetwork_mB532E6A57EA87145C1CFB17EE867C2595A5FF621 (void);
+extern void RoomStatusDisplay__ctor_mB6B41EBFE341D82D36CBC7FFFADDB8F8D3447433 (void);
+extern void RoomStatusDisplay_CopyBackingFieldsToState_m42D67B1F6831974A658292597469AD40A1636E93 (void);
+extern void RoomStatusDisplay_CopyStateToBackingFields_m3BCD031FD550614CAE98D65B969075E9832B8E1D (void);
+extern void Readme__ctor_m69C325C4C171DCB0312B646A9034AA91EA8C39C6 (void);
+extern void Section__ctor_m5F732533E4DFC0167D965E5F5DB332E46055399B (void);
+extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033 (void);
+extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA12ABC948AA22C2E78B2D0AA39B1 (void);
+static Il2CppMethodPointer s_methodPointers[16] = 
+{
+	BasicSpawner_PlayerJoined_m965398F6BAC08930B56FA5CF8A9CE095CA8100F5,
+	BasicSpawner__ctor_m1BFE260F3BBE86328E5F069D2CEB63DDB9660EFE,
+	ConnectionManager_OnStartHostClicked_mA9BAA0ECEA8FD238977FCCC5E7088920821997B1,
+	ConnectionManager_OnJoinClientClicked_m953CCE45A9E8C109C7BCADFB594BDEFA51171458,
+	ConnectionManager_StartGame_m1C56154B6A53A32E84C78F61B568BB60DEBFD9FC,
+	ConnectionManager__ctor_mEF06619535EA80CC53733FDBAFCD54A8CC73495B,
+	U3CStartGameU3Ed__5_MoveNext_mF0BA34D4C102637CD9AF29A9B0FCD118AC80C325,
+	U3CStartGameU3Ed__5_SetStateMachine_m680B4B6EB442F4F4BC880DA83C47D7925B237CB1,
+	RoomStatusDisplay_FixedUpdateNetwork_mB532E6A57EA87145C1CFB17EE867C2595A5FF621,
+	RoomStatusDisplay__ctor_mB6B41EBFE341D82D36CBC7FFFADDB8F8D3447433,
+	RoomStatusDisplay_CopyBackingFieldsToState_m42D67B1F6831974A658292597469AD40A1636E93,
+	RoomStatusDisplay_CopyStateToBackingFields_m3BCD031FD550614CAE98D65B969075E9832B8E1D,
+	Readme__ctor_m69C325C4C171DCB0312B646A9034AA91EA8C39C6,
+	Section__ctor_m5F732533E4DFC0167D965E5F5DB332E46055399B,
+	UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033,
+	UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA12ABC948AA22C2E78B2D0AA39B1,
+};
+extern void U3CStartGameU3Ed__5_MoveNext_mF0BA34D4C102637CD9AF29A9B0FCD118AC80C325_AdjustorThunk (void);
+extern void U3CStartGameU3Ed__5_SetStateMachine_m680B4B6EB442F4F4BC880DA83C47D7925B237CB1_AdjustorThunk (void);
+static Il2CppTokenAdjustorThunkPair s_adjustorThunks[2] = 
+{
+	{ 0x06000007, U3CStartGameU3Ed__5_MoveNext_mF0BA34D4C102637CD9AF29A9B0FCD118AC80C325_AdjustorThunk },
+	{ 0x06000008, U3CStartGameU3Ed__5_SetStateMachine_m680B4B6EB442F4F4BC880DA83C47D7925B237CB1_AdjustorThunk },
+};
+static const int32_t s_InvokerIndices[16] = 
+{
+	16967,
+	22069,
+	22069,
+	22069,
+	16821,
+	22069,
+	22069,
+	16935,
+	22069,
+	22069,
+	16664,
+	22069,
+	22069,
+	22069,
+	35833,
+	22069,
+};
+IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
+const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
+{
+	"Assembly-CSharp.dll",
+	16,
+	s_methodPointers,
+	2,
+	s_adjustorThunks,
+	s_InvokerIndices,
+	0,
+	NULL,
+	0,
+	NULL,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+};
