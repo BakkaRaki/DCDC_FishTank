@@ -26695,7 +26695,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR DataSet_t1F72E9737C995EBFDCF793C8
 		return L_0;
 	}
 }
-// Method Definition Index: 59187
+// Method Definition Index: 65136
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t ListChangedEventArgs_get_ListChangedType_m2CC7DCB7C2DE84C78A9194BC7B376D53B10581A4_inline (ListChangedEventArgs_tAAB4841B3E3BD67D39FBE075E920B653B5F35442* __this, const RuntimeMethod* method) 
 {
 	{
@@ -26703,7 +26703,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t ListChangedEventArgs_get_
 		return L_0;
 	}
 }
-// Method Definition Index: 59188
+// Method Definition Index: 65137
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t ListChangedEventArgs_get_NewIndex_m015DB5DEEFA5154BB4C39977584D5FCDB8FBBC98_inline (ListChangedEventArgs_tAAB4841B3E3BD67D39FBE075E920B653B5F35442* __this, const RuntimeMethod* method) 
 {
 	{
@@ -26711,7 +26711,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t ListChangedEventArgs_get_
 		return L_0;
 	}
 }
-// Method Definition Index: 59189
+// Method Definition Index: 65138
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t ListChangedEventArgs_get_OldIndex_m1FBD245795E09E5BCD0889DC405F1D5260389244_inline (ListChangedEventArgs_tAAB4841B3E3BD67D39FBE075E920B653B5F35442* __this, const RuntimeMethod* method) 
 {
 	{
@@ -26727,7 +26727,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR String_t* DataColumn_get_ColumnNa
 		return L_0;
 	}
 }
-// Method Definition Index: 59191
+// Method Definition Index: 65140
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void ListChangedEventHandler_Invoke_mA0F0B8AB273C63F017018390414C334FD602934E_inline (ListChangedEventHandler_tDBF36F3E2C6B7538106878E1D5A7553C5EA77616* __this, RuntimeObject* ___0_sender, ListChangedEventArgs_tAAB4841B3E3BD67D39FBE075E920B653B5F35442* ___1_e, const RuntimeMethod* method) 
 {
 	typedef void (*FunctionPointerType) (RuntimeObject*, RuntimeObject*, ListChangedEventArgs_tAAB4841B3E3BD67D39FBE075E920B653B5F35442*, const RuntimeMethod*);

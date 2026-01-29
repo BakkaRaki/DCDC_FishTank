@@ -4109,7 +4109,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void __JobReflectionRegistrationOutput__18748
 #ifdef __clang__
 #pragma clang diagnostic pop
 #endif
-// Method Definition Index: 66792
+// Method Definition Index: 61762
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Settings_set_enableCompaction_m1AB48D9BC0D0785988A3BED6C9BCC5932C53D6EC_inline (Settings_t635C231FDA8D35EBE9568F993ED1442F0E145D94* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
@@ -4118,7 +4118,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Settings_set_enableCompactio
 		return;
 	}
 }
-// Method Definition Index: 66790
+// Method Definition Index: 61760
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Settings_set_buildFlagsStaticGeometries_m27C81507599C81DDF01CADE529B58C97550A3058_inline (Settings_t635C231FDA8D35EBE9568F993ED1442F0E145D94* __this, int32_t ___0_value, const RuntimeMethod* method) 
 {
 	{
@@ -4136,7 +4136,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR RayTracingAccelerationStructure_t
 		return L_0;
 	}
 }
-// Method Definition Index: 66787
+// Method Definition Index: 61757
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void BuildSettings_set_buildFlags_mE83AE894871667EB2BBD1B68160B0292D518CC87_inline (BuildSettings_tB970A34CAC0B7D0539FFCA20FA7F1727CDAC2A02* __this, int32_t ___0_value, const RuntimeMethod* method) 
 {
 	{
@@ -4145,7 +4145,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void BuildSettings_set_buildFlags
 		return;
 	}
 }
-// Method Definition Index: 64794
+// Method Definition Index: 59764
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4159,7 +4159,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D
 		return L_0;
 	}
 }
-// Method Definition Index: 66788
+// Method Definition Index: 61758
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void BuildSettings_set_relativeOrigin_mC231E6EE2CF2776437A27C9463AFF52F9F0C39A5_inline (BuildSettings_tB970A34CAC0B7D0539FFCA20FA7F1727CDAC2A02* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_value, const RuntimeMethod* method) 
 {
 	{
@@ -4185,7 +4185,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void uint3__ctor_mEFEA14BBA36F531
 		return;
 	}
 }
-// Method Definition Index: 64739
+// Method Definition Index: 59709
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Matrix4x4_tDB70CF134A14BA38190C59AA700BCE10E2AED3E6 Matrix4x4_get_identity_m6568A73831F3E2D587420D20FF423959D7D8AB56_inline (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;

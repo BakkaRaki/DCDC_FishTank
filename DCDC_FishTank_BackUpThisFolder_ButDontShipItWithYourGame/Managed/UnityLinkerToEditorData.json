@@ -606,6 +606,14 @@
             "icon": null
           },
           {
+            "name": "TrailRenderer",
+            "scenes": [
+              "Assets/Scenes/BootScene.unity"
+            ],
+            "dependencyType": 0,
+            "icon": null
+          },
+          {
             "name": "Transform",
             "scenes": [],
             "dependencyType": 1,
