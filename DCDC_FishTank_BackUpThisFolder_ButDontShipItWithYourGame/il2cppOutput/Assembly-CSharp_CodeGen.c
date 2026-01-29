@@ -7,11 +7,9 @@
 
 
 
-extern void AquariumManager_FixedUpdateNetwork_mED428D4D6900C0020EF1C91D3F3CC677098EBFF1 (void);
+extern void AquariumManager_PlayerJoined_m3B5CCCDC45B063208BD453E6FBBACBE019763BA6 (void);
 extern void AquariumManager_SpawnFishSchool_mA4C3344A09F1A8183C1D5DD4D2D437B1994F8BA2 (void);
 extern void AquariumManager__ctor_mF5F358832E292177AD8501AB9662D2DD6E75E11A (void);
-extern void AquariumManager_CopyBackingFieldsToState_mC838705C9F8C1E4717E85012D24F19535D6DA903 (void);
-extern void AquariumManager_CopyStateToBackingFields_m59830B508568C9D6EF41A23BCDEF27E5749FDC17 (void);
 extern void BasicSpawner_PlayerJoined_m965398F6BAC08930B56FA5CF8A9CE095CA8100F5 (void);
 extern void BasicSpawner__ctor_m1BFE260F3BBE86328E5F069D2CEB63DDB9660EFE (void);
 extern void ConnectionManager_OnStartHostClicked_mA9BAA0ECEA8FD238977FCCC5E7088920821997B1 (void);
@@ -35,13 +33,11 @@ extern void Readme__ctor_m69C325C4C171DCB0312B646A9034AA91EA8C39C6 (void);
 extern void Section__ctor_m5F732533E4DFC0167D965E5F5DB332E46055399B (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033 (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA12ABC948AA22C2E78B2D0AA39B1 (void);
-static Il2CppMethodPointer s_methodPointers[28] = 
+static Il2CppMethodPointer s_methodPointers[26] = 
 {
-	AquariumManager_FixedUpdateNetwork_mED428D4D6900C0020EF1C91D3F3CC677098EBFF1,
+	AquariumManager_PlayerJoined_m3B5CCCDC45B063208BD453E6FBBACBE019763BA6,
 	AquariumManager_SpawnFishSchool_mA4C3344A09F1A8183C1D5DD4D2D437B1994F8BA2,
 	AquariumManager__ctor_mF5F358832E292177AD8501AB9662D2DD6E75E11A,
-	AquariumManager_CopyBackingFieldsToState_mC838705C9F8C1E4717E85012D24F19535D6DA903,
-	AquariumManager_CopyStateToBackingFields_m59830B508568C9D6EF41A23BCDEF27E5749FDC17,
 	BasicSpawner_PlayerJoined_m965398F6BAC08930B56FA5CF8A9CE095CA8100F5,
 	BasicSpawner__ctor_m1BFE260F3BBE86328E5F069D2CEB63DDB9660EFE,
 	ConnectionManager_OnStartHostClicked_mA9BAA0ECEA8FD238977FCCC5E7088920821997B1,
@@ -70,15 +66,13 @@ extern void U3CStartGameU3Ed__5_MoveNext_mF0BA34D4C102637CD9AF29A9B0FCD118AC80C3
 extern void U3CStartGameU3Ed__5_SetStateMachine_m680B4B6EB442F4F4BC880DA83C47D7925B237CB1_AdjustorThunk (void);
 static Il2CppTokenAdjustorThunkPair s_adjustorThunks[2] = 
 {
-	{ 0x0600000C, U3CStartGameU3Ed__5_MoveNext_mF0BA34D4C102637CD9AF29A9B0FCD118AC80C325_AdjustorThunk },
-	{ 0x0600000D, U3CStartGameU3Ed__5_SetStateMachine_m680B4B6EB442F4F4BC880DA83C47D7925B237CB1_AdjustorThunk },
+	{ 0x0600000A, U3CStartGameU3Ed__5_MoveNext_mF0BA34D4C102637CD9AF29A9B0FCD118AC80C325_AdjustorThunk },
+	{ 0x0600000B, U3CStartGameU3Ed__5_SetStateMachine_m680B4B6EB442F4F4BC880DA83C47D7925B237CB1_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[28] = 
+static const int32_t s_InvokerIndices[26] = 
 {
+	16967,
 	22069,
-	22069,
-	22069,
-	16664,
 	22069,
 	16967,
 	22069,
@@ -108,7 +102,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	28,
+	26,
 	s_methodPointers,
 	2,
 	s_adjustorThunks,

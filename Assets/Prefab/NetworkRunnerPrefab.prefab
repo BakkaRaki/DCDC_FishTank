@@ -144,4 +144,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AquariumManager
   FishPrefab: {fileID: 3681311844758250167, guid: 0b27fb6bf85bc9240b6c3d557329b0f5, type: 3}
-  FishCount: 3
+  FishCount: 18

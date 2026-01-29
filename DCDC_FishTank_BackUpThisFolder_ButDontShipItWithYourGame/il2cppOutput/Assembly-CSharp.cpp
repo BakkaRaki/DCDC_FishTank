@@ -2229,6 +2229,12 @@ struct SimulationBehaviour_t39725B66BC703470FBE62B427C25F58B3B7054F0  : public B
 	NetworkRunner_tEB731E5822AE5C584747D8D3BDA75386725AC12A* ____runner;
 	NetworkObject_t6AA3B74338F725B9B1C05D73EBC12AF9E9CC0E5C* ____object;
 };
+struct AquariumManager_tCD8A2E22A2AA75F75327312110C06B344DDFD648  : public SimulationBehaviour_t39725B66BC703470FBE62B427C25F58B3B7054F0
+{
+	NetworkObject_t6AA3B74338F725B9B1C05D73EBC12AF9E9CC0E5C* ___FishPrefab;
+	int32_t ___FishCount;
+	bool ____hasSpawned;
+};
 struct BasicSpawner_t1719982C9241CAD2143780BF7C6F96FA53C0652B  : public SimulationBehaviour_t39725B66BC703470FBE62B427C25F58B3B7054F0
 {
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___PlayerPrefab;
@@ -2257,12 +2263,6 @@ struct NetworkBehaviour_t6DC912DE6ED4D9C556AE37A4CC23D247C52C57B3  : public Simu
 	int32_t ___WordCount;
 	bool ___DefaultReplicated;
 	ChangeDetector_tE29D67743E80373653F0CD610A47FF2E05BDB9DD* ____onRenderCallbacksDetector;
-};
-struct AquariumManager_tCD8A2E22A2AA75F75327312110C06B344DDFD648  : public NetworkBehaviour_t6DC912DE6ED4D9C556AE37A4CC23D247C52C57B3
-{
-	NetworkObject_t6AA3B74338F725B9B1C05D73EBC12AF9E9CC0E5C* ___FishPrefab;
-	int32_t ___FishCount;
-	bool ____hasSpawned;
 };
 struct RoomStatusDisplay_t4077A04645ADA9F0310E3189B268F08A37D0C7FA  : public NetworkBehaviour_t6DC912DE6ED4D9C556AE37A4CC23D247C52C57B3
 {
@@ -2708,7 +2708,7 @@ inline void Nullable_1__ctor_mD66F35DE9BE52A35809D09B3F4B8CD1722D3ED3A (Nullable
 	((  void (*) (Nullable_1_tC8106DB4DC621B5BCB8913A244640A1CEDF9DD25*, Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974, const RuntimeMethod*))Nullable_1__ctor_mD66F35DE9BE52A35809D09B3F4B8CD1722D3ED3A_gshared)(__this, ___0_value, method);
 }
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR NetworkObject_t6AA3B74338F725B9B1C05D73EBC12AF9E9CC0E5C* NetworkRunner_Spawn_m08B9421C423F578FC17566DD4CBC55778CFF2E2E (NetworkRunner_tEB731E5822AE5C584747D8D3BDA75386725AC12A* __this, NetworkObject_t6AA3B74338F725B9B1C05D73EBC12AF9E9CC0E5C* ___0_prefab, Nullable_1_t9C51B084784B716FFF4ED4575C63CFD8A71A86FE ___1_position, Nullable_1_tC8106DB4DC621B5BCB8913A244640A1CEDF9DD25 ___2_rotation, Nullable_1_t897B396C6C752586AD4510921C57F944CDE65622 ___3_inputAuthority, OnBeforeSpawned_t04E782C697AB6ECB28A59F33950C3ACDF731C16B* ___4_onBeforeSpawned, int16_t ___5_flags, const RuntimeMethod* method) ;
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NetworkBehaviour__ctor_m80B5DC72F7815EEC5B6DDF46B9AF965112268053 (NetworkBehaviour_t6DC912DE6ED4D9C556AE37A4CC23D247C52C57B3* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SimulationBehaviour__ctor_m5547F07C9BC04E898E71BB86F72BD33D9B9FC937 (SimulationBehaviour_t39725B66BC703470FBE62B427C25F58B3B7054F0* __this, const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 Quaternion_get_identity_m7E701AE095ED10FD5EA0B50ABCFDE2EEFF2173A5_inline (const RuntimeMethod* method) ;
 inline void Nullable_1__ctor_mB2794E648CBFFAB16AEC3E495389D00B099FD72D (Nullable_1_t897B396C6C752586AD4510921C57F944CDE65622* __this, PlayerRef_tFAC74D9C43A58F5E8E2959C36FFCB98B7E834EDC ___0_value, const RuntimeMethod* method)
 {
@@ -2718,7 +2718,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR NetworkObject_t6AA3B74338F725B9B1C05D73EBC12A
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602 (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C* ___0_x, Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C* ___1_y, const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR NetworkId_t55BD78F35465C7B51581907AC1DB01F8568237F2 NetworkObject_get_Id_m3A2FB6E53BA3ACA5D9D531213A7CD61A25D776D8_inline (NetworkObject_t6AA3B74338F725B9B1C05D73EBC12AF9E9CC0E5C* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2 (RuntimeObject* ___0_message, const RuntimeMethod* method) ;
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SimulationBehaviour__ctor_m5547F07C9BC04E898E71BB86F72BD33D9B9FC937 (SimulationBehaviour_t39725B66BC703470FBE62B427C25F58B3B7054F0* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ConnectionManager_StartGame_m1C56154B6A53A32E84C78F61B568BB60DEBFD9FC (ConnectionManager_tE1F6C44B2BDD2E1B1D9E676AD43A80DCB17FBCE7* __this, int32_t ___0_mode, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D AsyncVoidMethodBuilder_Create_m13D0B23DD350C14035918384E10AF641E6B9EE67 (const RuntimeMethod* method) ;
 inline void AsyncVoidMethodBuilder_Start_TisU3CStartGameU3Ed__5_t0836BE8761F7D3931B1929991C2FB35901BF0E2E_m9A5DEF37876C099B892DA9493FABA4D7E8A99BA4 (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, U3CStartGameU3Ed__5_t0836BE8761F7D3931B1929991C2FB35901BF0E2E* ___0_stateMachine, const RuntimeMethod* method)
@@ -2778,6 +2777,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t NetworkRunner_get_GameMod
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* Enum_ToString_m946B0B83C4470457D0FF555D862022C72BB55741 (RuntimeObject* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR PlayerRef_tFAC74D9C43A58F5E8E2959C36FFCB98B7E834EDC NetworkRunner_get_LocalPlayer_mC7AB05AEC180A8376D2667583C90F88FE8DB28F7 (NetworkRunner_tEB731E5822AE5C584747D8D3BDA75386725AC12A* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* String_Format_mA0534D6E2AE4D67A6BD8D45B3321323930EB930C (String_t* ___0_format, RuntimeObject* ___1_arg0, RuntimeObject* ___2_arg1, RuntimeObject* ___3_arg2, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NetworkBehaviour__ctor_m80B5DC72F7815EEC5B6DDF46B9AF965112268053 (NetworkBehaviour_t6DC912DE6ED4D9C556AE37A4CC23D247C52C57B3* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float Random_Range_m5236C99A7D8AE6AC9190592DC66016652A2D2494 (float ___0_minInclusive, float ___1_maxInclusive, const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR NetworkObject_t6AA3B74338F725B9B1C05D73EBC12AF9E9CC0E5C* SimulationBehaviour_get_Object_m7409CB99EA711621E81D066834FF3E4A3A84E8C9_inline (SimulationBehaviour_t39725B66BC703470FBE62B427C25F58B3B7054F0* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool NetworkObject_get_HasStateAuthority_m20DFCBB66C787E2B2ED94B31AC1035B62251CC07 (NetworkObject_t6AA3B74338F725B9B1C05D73EBC12AF9E9CC0E5C* __this, const RuntimeMethod* method) ;
@@ -2821,10 +2821,10 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Vector3_get_magnitude_mF0D6
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
 // Method Definition Index: 131567
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AquariumManager_FixedUpdateNetwork_mED428D4D6900C0020EF1C91D3F3CC677098EBFF1 (AquariumManager_tCD8A2E22A2AA75F75327312110C06B344DDFD648* __this, const RuntimeMethod* method) 
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AquariumManager_PlayerJoined_m3B5CCCDC45B063208BD453E6FBBACBE019763BA6 (AquariumManager_tCD8A2E22A2AA75F75327312110C06B344DDFD648* __this, PlayerRef_tFAC74D9C43A58F5E8E2959C36FFCB98B7E834EDC ___0_player, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:E:/UNITY/Projects/PKIT_FishTank/Assets/Scripts/AquariumManager.cs:17>
+		//<source_info:E:/UNITY/Projects/PKIT_FishTank/Assets/Scripts/AquariumManager.cs:21>
 		NetworkRunner_tEB731E5822AE5C584747D8D3BDA75386725AC12A* L_0;
 		L_0 = SimulationBehaviour_get_Runner_m8D7107E8BE26590918B009087E49A2AB7B6432E3_inline(__this, NULL);
 		NullCheck(L_0);
@@ -2843,15 +2843,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AquariumManager_FixedUpdateNetwork_mED42
 		}
 	}
 	{
-		//<source_info:E:/UNITY/Projects/PKIT_FishTank/Assets/Scripts/AquariumManager.cs:19>
+		//<source_info:E:/UNITY/Projects/PKIT_FishTank/Assets/Scripts/AquariumManager.cs:23>
 		AquariumManager_SpawnFishSchool_mA4C3344A09F1A8183C1D5DD4D2D437B1994F8BA2(__this, NULL);
-		//<source_info:E:/UNITY/Projects/PKIT_FishTank/Assets/Scripts/AquariumManager.cs:20>
+		//<source_info:E:/UNITY/Projects/PKIT_FishTank/Assets/Scripts/AquariumManager.cs:24>
 		__this->____hasSpawned = (bool)1;
 	}
 
 IL_0022:
 	{
-		//<source_info:E:/UNITY/Projects/PKIT_FishTank/Assets/Scripts/AquariumManager.cs:22>
+		//<source_info:E:/UNITY/Projects/PKIT_FishTank/Assets/Scripts/AquariumManager.cs:26>
 		return;
 	}
 }
@@ -2875,7 +2875,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AquariumManager_SpawnFishSchool_mA4C3344
 	Nullable_1_t897B396C6C752586AD4510921C57F944CDE65622 V_3;
 	memset((&V_3), 0, sizeof(V_3));
 	{
-		//<source_info:E:/UNITY/Projects/PKIT_FishTank/Assets/Scripts/AquariumManager.cs:26>
+		//<source_info:E:/UNITY/Projects/PKIT_FishTank/Assets/Scripts/AquariumManager.cs:30>
 		int32_t L_0 = __this->___FishCount;
 		int32_t L_1 = L_0;
 		RuntimeObject* L_2 = Box(il2cpp_defaults.int32_class, &L_1);
@@ -2883,14 +2883,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AquariumManager_SpawnFishSchool_mA4C3344
 		L_3 = String_Format_mA8DBB4C2516B9723C5A41E6CB1E2FAF4BBE96DD8(_stringLiteral98AFCFDAD9434F76F47DB9EDB82E5013302630C3, L_2, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(L_3, NULL);
-		//<source_info:E:/UNITY/Projects/PKIT_FishTank/Assets/Scripts/AquariumManager.cs:27>
+		//<source_info:E:/UNITY/Projects/PKIT_FishTank/Assets/Scripts/AquariumManager.cs:31>
 		V_0 = 0;
 		goto IL_007a;
 	}
 
 IL_001e:
 	{
-		//<source_info:E:/UNITY/Projects/PKIT_FishTank/Assets/Scripts/AquariumManager.cs:30>
+		//<source_info:E:/UNITY/Projects/PKIT_FishTank/Assets/Scripts/AquariumManager.cs:33>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4;
 		memset((&L_4), 0, sizeof(L_4));
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_4), (0.0f), (1.5f), (1.0f), NULL);
@@ -2901,11 +2901,11 @@ IL_001e:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_7;
 		L_7 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_4, L_6, NULL);
 		V_1 = L_7;
-		//<source_info:E:/UNITY/Projects/PKIT_FishTank/Assets/Scripts/AquariumManager.cs:31>
+		//<source_info:E:/UNITY/Projects/PKIT_FishTank/Assets/Scripts/AquariumManager.cs:34>
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_8;
 		L_8 = Random_get_rotation_m8B04B3FB3927208F0CB8C65295B0226E7FC7E9E2(NULL);
 		V_2 = L_8;
-		//<source_info:E:/UNITY/Projects/PKIT_FishTank/Assets/Scripts/AquariumManager.cs:33>
+		//<source_info:E:/UNITY/Projects/PKIT_FishTank/Assets/Scripts/AquariumManager.cs:35>
 		NetworkRunner_tEB731E5822AE5C584747D8D3BDA75386725AC12A* L_9;
 		L_9 = SimulationBehaviour_get_Runner_m8D7107E8BE26590918B009087E49A2AB7B6432E3_inline(__this, NULL);
 		NetworkObject_t6AA3B74338F725B9B1C05D73EBC12AF9E9CC0E5C* L_10 = __this->___FishPrefab;
@@ -2922,14 +2922,14 @@ IL_001e:
 		NullCheck(L_9);
 		NetworkObject_t6AA3B74338F725B9B1C05D73EBC12AF9E9CC0E5C* L_16;
 		L_16 = NetworkRunner_Spawn_m08B9421C423F578FC17566DD4CBC55778CFF2E2E(L_9, L_10, L_12, L_14, L_15, (OnBeforeSpawned_t04E782C697AB6ECB28A59F33950C3ACDF731C16B*)NULL, 0, NULL);
-		//<source_info:E:/UNITY/Projects/PKIT_FishTank/Assets/Scripts/AquariumManager.cs:27>
+		//<source_info:E:/UNITY/Projects/PKIT_FishTank/Assets/Scripts/AquariumManager.cs:31>
 		int32_t L_17 = V_0;
 		V_0 = ((int32_t)il2cpp_codegen_add(L_17, 1));
 	}
 
 IL_007a:
 	{
-		//<source_info:E:/UNITY/Projects/PKIT_FishTank/Assets/Scripts/AquariumManager.cs:27>
+		//<source_info:E:/UNITY/Projects/PKIT_FishTank/Assets/Scripts/AquariumManager.cs:31>
 		int32_t L_18 = V_0;
 		int32_t L_19 = __this->___FishCount;
 		if ((((int32_t)L_18) < ((int32_t)L_19)))
@@ -2938,7 +2938,7 @@ IL_007a:
 		}
 	}
 	{
-		//<source_info:E:/UNITY/Projects/PKIT_FishTank/Assets/Scripts/AquariumManager.cs:35>
+		//<source_info:E:/UNITY/Projects/PKIT_FishTank/Assets/Scripts/AquariumManager.cs:37>
 		return;
 	}
 }
@@ -2946,23 +2946,9 @@ IL_007a:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AquariumManager__ctor_mF5F358832E292177AD8501AB9662D2DD6E75E11A (AquariumManager_tCD8A2E22A2AA75F75327312110C06B344DDFD648* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:E:/UNITY/Projects/PKIT_FishTank/Assets/Scripts/AquariumManager.cs:9>
+		//<source_info:E:/UNITY/Projects/PKIT_FishTank/Assets/Scripts/AquariumManager.cs:10>
 		__this->___FishCount = ((int32_t)20);
-		NetworkBehaviour__ctor_m80B5DC72F7815EEC5B6DDF46B9AF965112268053(__this, NULL);
-		return;
-	}
-}
-// Method Definition Index: 131570
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AquariumManager_CopyBackingFieldsToState_mC838705C9F8C1E4717E85012D24F19535D6DA903 (AquariumManager_tCD8A2E22A2AA75F75327312110C06B344DDFD648* __this, bool ___0_p, const RuntimeMethod* method) 
-{
-	{
-		return;
-	}
-}
-// Method Definition Index: 131571
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AquariumManager_CopyStateToBackingFields_m59830B508568C9D6EF41A23BCDEF27E5749FDC17 (AquariumManager_tCD8A2E22A2AA75F75327312110C06B344DDFD648* __this, const RuntimeMethod* method) 
-{
-	{
+		SimulationBehaviour__ctor_m5547F07C9BC04E898E71BB86F72BD33D9B9FC937(__this, NULL);
 		return;
 	}
 }
@@ -2974,7 +2960,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AquariumManager_CopyStateToBackingFields
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 131572
+// Method Definition Index: 131570
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BasicSpawner_PlayerJoined_m965398F6BAC08930B56FA5CF8A9CE095CA8100F5 (BasicSpawner_t1719982C9241CAD2143780BF7C6F96FA53C0652B* __this, PlayerRef_tFAC74D9C43A58F5E8E2959C36FFCB98B7E834EDC ___0_player, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3106,7 +3092,7 @@ IL_00d0:
 		return;
 	}
 }
-// Method Definition Index: 131573
+// Method Definition Index: 131571
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BasicSpawner__ctor_m1BFE260F3BBE86328E5F069D2CEB63DDB9660EFE (BasicSpawner_t1719982C9241CAD2143780BF7C6F96FA53C0652B* __this, const RuntimeMethod* method) 
 {
 	{
@@ -3122,7 +3108,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BasicSpawner__ctor_m1BFE260F3BBE86328E5F
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 131574
+// Method Definition Index: 131572
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ConnectionManager_OnStartHostClicked_mA9BAA0ECEA8FD238977FCCC5E7088920821997B1 (ConnectionManager_tE1F6C44B2BDD2E1B1D9E676AD43A80DCB17FBCE7* __this, const RuntimeMethod* method) 
 {
 	{
@@ -3132,7 +3118,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ConnectionManager_OnStartHostClicked_mA9
 		return;
 	}
 }
-// Method Definition Index: 131575
+// Method Definition Index: 131573
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ConnectionManager_OnJoinClientClicked_m953CCE45A9E8C109C7BCADFB594BDEFA51171458 (ConnectionManager_tE1F6C44B2BDD2E1B1D9E676AD43A80DCB17FBCE7* __this, const RuntimeMethod* method) 
 {
 	{
@@ -3142,7 +3128,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ConnectionManager_OnJoinClientClicked_m9
 		return;
 	}
 }
-// Method Definition Index: 131576
+// Method Definition Index: 131574
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ConnectionManager_StartGame_m1C56154B6A53A32E84C78F61B568BB60DEBFD9FC (ConnectionManager_tE1F6C44B2BDD2E1B1D9E676AD43A80DCB17FBCE7* __this, int32_t ___0_mode, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3177,7 +3163,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ConnectionManager_StartGame_m1C56154B6A5
 		return;
 	}
 }
-// Method Definition Index: 131577
+// Method Definition Index: 131575
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ConnectionManager__ctor_mEF06619535EA80CC53733FDBAFCD54A8CC73495B (ConnectionManager_tE1F6C44B2BDD2E1B1D9E676AD43A80DCB17FBCE7* __this, const RuntimeMethod* method) 
 {
 	{
@@ -3193,7 +3179,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ConnectionManager__ctor_mEF06619535EA80C
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 131578
+// Method Definition Index: 131576
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CStartGameU3Ed__5_MoveNext_mF0BA34D4C102637CD9AF29A9B0FCD118AC80C325 (U3CStartGameU3Ed__5_t0836BE8761F7D3931B1929991C2FB35901BF0E2E* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3534,7 +3520,7 @@ IL2CPP_EXTERN_C  void U3CStartGameU3Ed__5_MoveNext_mF0BA34D4C102637CD9AF29A9B0FC
 	_thisAdjusted = reinterpret_cast<U3CStartGameU3Ed__5_t0836BE8761F7D3931B1929991C2FB35901BF0E2E*>(__this + _offset);
 	U3CStartGameU3Ed__5_MoveNext_mF0BA34D4C102637CD9AF29A9B0FCD118AC80C325(_thisAdjusted, method);
 }
-// Method Definition Index: 131579
+// Method Definition Index: 131577
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CStartGameU3Ed__5_SetStateMachine_m680B4B6EB442F4F4BC880DA83C47D7925B237CB1 (U3CStartGameU3Ed__5_t0836BE8761F7D3931B1929991C2FB35901BF0E2E* __this, RuntimeObject* ___0_stateMachine, const RuntimeMethod* method) 
 {
 	{
@@ -3559,7 +3545,7 @@ IL2CPP_EXTERN_C  void U3CStartGameU3Ed__5_SetStateMachine_m680B4B6EB442F4F4BC880
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 131580
+// Method Definition Index: 131578
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RoomStatusDisplay_FixedUpdateNetwork_mB532E6A57EA87145C1CFB17EE867C2595A5FF621 (RoomStatusDisplay_t4077A04645ADA9F0310E3189B268F08A37D0C7FA* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3650,7 +3636,7 @@ IL_0073:
 		return;
 	}
 }
-// Method Definition Index: 131581
+// Method Definition Index: 131579
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RoomStatusDisplay__ctor_mB6B41EBFE341D82D36CBC7FFFADDB8F8D3447433 (RoomStatusDisplay_t4077A04645ADA9F0310E3189B268F08A37D0C7FA* __this, const RuntimeMethod* method) 
 {
 	{
@@ -3658,14 +3644,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RoomStatusDisplay__ctor_mB6B41EBFE341D82
 		return;
 	}
 }
-// Method Definition Index: 131582
+// Method Definition Index: 131580
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RoomStatusDisplay_CopyBackingFieldsToState_m42D67B1F6831974A658292597469AD40A1636E93 (RoomStatusDisplay_t4077A04645ADA9F0310E3189B268F08A37D0C7FA* __this, bool ___0_p, const RuntimeMethod* method) 
 {
 	{
 		return;
 	}
 }
-// Method Definition Index: 131583
+// Method Definition Index: 131581
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RoomStatusDisplay_CopyStateToBackingFields_m3BCD031FD550614CAE98D65B969075E9832B8E1D (RoomStatusDisplay_t4077A04645ADA9F0310E3189B268F08A37D0C7FA* __this, const RuntimeMethod* method) 
 {
 	{
@@ -3680,7 +3666,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RoomStatusDisplay_CopyStateToBackingFiel
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 131584
+// Method Definition Index: 131582
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SimpleBoid_Spawned_m7D6D9252ABADBA72B50C6A7DFCDDFFACBCF4B8F6 (SimpleBoid_tFDF792C47167194EC39D1F92E717B7A5638C4FCE* __this, const RuntimeMethod* method) 
 {
 	{
@@ -3692,7 +3678,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SimpleBoid_Spawned_m7D6D9252ABADBA72B50C
 		return;
 	}
 }
-// Method Definition Index: 131585
+// Method Definition Index: 131583
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SimpleBoid_FixedUpdateNetwork_mC56B0446A162FD882952E2C45882B86B5D8C717B (SimpleBoid_tFDF792C47167194EC39D1F92E717B7A5638C4FCE* __this, const RuntimeMethod* method) 
 {
 	{
@@ -3722,7 +3708,7 @@ IL_000e:
 		return;
 	}
 }
-// Method Definition Index: 131586
+// Method Definition Index: 131584
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SimpleBoid_MoveFish_mBBDC8A91B93E802518C757DC9A4D91DD4B685A2B (SimpleBoid_tFDF792C47167194EC39D1F92E717B7A5638C4FCE* __this, const RuntimeMethod* method) 
 {
 	float V_0 = 0.0f;
@@ -3799,7 +3785,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SimpleBoid_MoveFish_mBBDC8A91B93E802518C
 		return;
 	}
 }
-// Method Definition Index: 131587
+// Method Definition Index: 131585
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SimpleBoid_KeepInBounds_m4A281DC12FB3DD25BA22299593AB765622792867 (SimpleBoid_tFDF792C47167194EC39D1F92E717B7A5638C4FCE* __this, const RuntimeMethod* method) 
 {
 	Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 V_0;
@@ -3867,7 +3853,7 @@ IL_0070:
 		return;
 	}
 }
-// Method Definition Index: 131588
+// Method Definition Index: 131586
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SimpleBoid__ctor_mCECC1B41628A0056A94AA294424698A120F05507 (SimpleBoid_tFDF792C47167194EC39D1F92E717B7A5638C4FCE* __this, const RuntimeMethod* method) 
 {
 	{
@@ -3886,14 +3872,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SimpleBoid__ctor_mCECC1B41628A0056A94AA2
 		return;
 	}
 }
-// Method Definition Index: 131589
+// Method Definition Index: 131587
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SimpleBoid_CopyBackingFieldsToState_m40670CF2567F1FCCA558A4D78522CC2AB684FDED (SimpleBoid_tFDF792C47167194EC39D1F92E717B7A5638C4FCE* __this, bool ___0_p, const RuntimeMethod* method) 
 {
 	{
 		return;
 	}
 }
-// Method Definition Index: 131590
+// Method Definition Index: 131588
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SimpleBoid_CopyStateToBackingFields_m4F0A04FAAB796BFEFB505528DC49C493E9290AAE (SimpleBoid_tFDF792C47167194EC39D1F92E717B7A5638C4FCE* __this, const RuntimeMethod* method) 
 {
 	{
@@ -3908,7 +3894,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SimpleBoid_CopyStateToBackingFields_m4F0
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 131591
+// Method Definition Index: 131589
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Readme__ctor_m69C325C4C171DCB0312B646A9034AA91EA8C39C6 (Readme_tE17B99201D0F52BD5727638AD3F41072A65B3BBB* __this, const RuntimeMethod* method) 
 {
 	{
@@ -3924,7 +3910,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Readme__ctor_m69C325C4C171DCB0312B646A90
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 131592
+// Method Definition Index: 131590
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Section__ctor_m5F732533E4DFC0167D965E5F5DB332E46055399B (Section_t50C894D0A717C2368EBAAE5477D4E8626D0B5401* __this, const RuntimeMethod* method) 
 {
 	{
@@ -3940,7 +3926,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Section__ctor_m5F732533E4DFC0167D965E5F5
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 131593
+// Method Definition Index: 131591
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR MonoScriptData_t8F50E352855B96FFFC1D9CB07EACC90C99D73A3E UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033 (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3974,7 +3960,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR MonoScriptData_t8F50E352855B96FFFC1D9CB07EACC
 		return L_6;
 	}
 }
-// Method Definition Index: 131594
+// Method Definition Index: 131592
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA12ABC948AA22C2E78B2D0AA39B1 (UnitySourceGeneratedAssemblyMonoScriptTypes_v1_tC95F24D0C6E6B77389433852BB389F39C692926E* __this, const RuntimeMethod* method) 
 {
 	{
