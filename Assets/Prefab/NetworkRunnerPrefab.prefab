@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6637197191714559810}
   - component: {fileID: 4310378520521905817}
   - component: {fileID: 8030905693358698310}
+  - component: {fileID: 5828808025553451093}
   m_Layer: 0
   m_Name: NetworkRunnerPrefab
   m_TagString: Untagged
@@ -145,3 +146,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AquariumManager
   FishPrefab: {fileID: 3681311844758250167, guid: 0b27fb6bf85bc9240b6c3d557329b0f5, type: 3}
   FishCount: 18
+--- !u!114 &5828808025553451093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5325545753285408894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d0a1602d3a6fcf4b96453a98988884b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BasicSpawner
+  PlayerPrefab: {fileID: 8816320102321210441, guid: ec186751a1b37424f970f26a7c13b9f1, type: 3}

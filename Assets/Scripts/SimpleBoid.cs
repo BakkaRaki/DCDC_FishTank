@@ -17,6 +17,11 @@ public class SimpleBoid : NetworkBehaviour
     [Header("Perception (感知)")]
     public float VisionRadius = 1.5f;     // 能看到多远的邻居
 
+    [Header("Interaction Weights")]
+    public float FoodWeight = 2.0f;      // 对食物的渴望
+    public float ScareWeight = 5.0f;     // 对手的恐惧
+    public float ScareRadius = 0.8f;     // 躲避范围
+
     // 鱼缸中心设置 (Day 2 的参数)
     private Vector3 _boundsCenter = new Vector3(0, 1.5f, 1);
     private float _boundsRadius = 5f;
@@ -81,6 +86,47 @@ public class SimpleBoid : NetworkBehaviour
         int neighborCount = 0;
         Vector3 averagePosition = Vector3.zero;
 
+        // --- 新增逻辑 1：寻找食物 (Attraction) ---
+        Vector3 foodSteer = Vector3.zero;
+        // 简单粗暴：找场景里所有的 Food
+        // (优化建议：实际项目中应该用 Physics.OverlapSphere)
+        GameObject[] foods = GameObject.FindGameObjectsWithTag("Food");
+        GameObject closestFood = null;
+        float minFoodDist = 100f;
+
+        foreach (var f in foods)
+        {
+            float d = Vector3.Distance(transform.position, f.transform.position);
+            if (d < minFoodDist && d < VisionRadius * 2) // 视野比看同伴远一点
+            {
+                minFoodDist = d;
+                closestFood = f;
+            }
+        }
+
+        if (closestFood != null)
+        {
+            // 产生一个指向食物的向量
+            foodSteer = (closestFood.transform.position - transform.position).normalized;
+        }
+
+        // --- 新增逻辑 2：躲避玩家 (Repulsion) ---
+        Vector3 scareSteer = Vector3.zero;
+        // 遍历所有玩家 (Fusion 的 Player 列表很难直接拿位置，我们简单找 Tag 为 Player 的物体)
+        // 假设你的 PlayerAvatar Tag 设为了 "Player"
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        foreach (var p in players)
+        {
+            float d = Vector3.Distance(transform.position, p.transform.position);
+            if (d < ScareRadius)
+            {
+                // 产生一个背离玩家的向量 (斥力)
+                // 距离越近，斥力越大 (1.0/d)
+                scareSteer += (transform.position - p.transform.position).normalized / d;
+            }
+        }
+        // 鱼群逻辑
         // 1. 遍历所有鱼，寻找邻居
         foreach (var other in AquariumManager.AllBoids)
         {
@@ -132,7 +178,9 @@ public class SimpleBoid : NetworkBehaviour
         moveDirection += separation * SeparationWeight;
         moveDirection += alignment * AlignmentWeight;
         moveDirection += cohesion * CohesionWeight;
-        moveDirection += boundsPull * BoundsWeight;
+        moveDirection += boundsPull * BoundsWeight; 
+        moveDirection += foodSteer * FoodWeight;
+        moveDirection += scareSteer * ScareWeight; // 恐惧优先级最高
 
         // [新增] 加入柏林噪声 (Perlin Noise) 扰动
         // 基于时间和每条鱼唯一的 _randomOffset
