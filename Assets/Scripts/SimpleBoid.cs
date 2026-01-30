@@ -106,8 +106,29 @@ public class SimpleBoid : NetworkBehaviour
 
         if (closestFood != null)
         {
-            // 产生一个指向食物的向量
+            float distToFood = Vector3.Distance(transform.position, closestFood.transform.position);
+
+            // 1. [新增] 进食判定：如果距离非常近 (比如 < 0.2米)
+            if (distToFood < 0.2f)
+            {
+                // 只有 Host 有权销毁物体
+                if (Object.HasStateAuthority)
+                {
+                    // 获取食物身上的 NetworkObject
+                    var foodNetObj = closestFood.GetComponent<NetworkObject>();
+                    if (foodNetObj != null)
+                    {
+                        // 吃掉它！(销毁)
+                        Runner.Despawn(foodNetObj);
+                    }
+                }
+                // 既然吃掉了，这帧就不需要转向了
+                return;
+            }
+
+            // 2. 原有的转向逻辑 (稍微减小一点权重，防止冲太猛)
             foodSteer = (closestFood.transform.position - transform.position).normalized;
+            foodSteer *= Mathf.Clamp01(distToFood); 
         }
 
         // --- 新增逻辑 2：躲避玩家 (Repulsion) ---

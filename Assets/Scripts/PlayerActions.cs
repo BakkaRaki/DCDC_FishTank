@@ -5,131 +5,107 @@ using UnityEngine.XR;
 
 public class PlayerActions : NetworkBehaviour
 {
+    [Header("Settings")]
     public NetworkObject FoodPrefab;
+    public float CooldownTime = 0.5f;
+
     [Networked] private TickTimer SpawnCoolDown { get; set; }
 
-    // 引用
+    // 本地缓存
     private OVRHand _localRightHand;
-
-    // 调试开关
-    private bool _hasLoggedMissingPrefab = false;
+    private bool _wasPinching = false;
 
     public override void Spawned()
     {
-        // 1. 检查是否是本地玩家
         if (Object.HasInputAuthority)
         {
-            Debug.Log($"[调试] 玩家对象生成成功。我是本地玩家吗？Yes。ID: {Object.Id}");
             FindLocalHand();
-        }
-        else
-        {
-            // 如果日志里只出现这句，没出现上面的 Yes，说明 Authority 设置有问题
-            // 但通常 Client 上应该至少有一条日志是 Yes
         }
     }
 
     void FindLocalHand()
     {
-        // 尝试找 OVRHand
-        OVRHand[] hands = FindObjectsByType<OVRHand>(FindObjectsSortMode.None);
+        // 尝试寻找右手的 OVRHand 组件
+        var hands = FindObjectsByType<OVRHand>(FindObjectsSortMode.None);
         foreach (var hand in hands)
         {
+            // 依然保持大写 P 的修复
             if (hand.PointerPose != null && (hand.name.Contains("Right") || hand.PointerPose.name.Contains("Right")))
             {
                 _localRightHand = hand;
-                Debug.Log($"[调试] 成功找到 OVRHand 右手组件: {hand.name}");
                 break;
             }
-        }
-
-        if (_localRightHand == null)
-        {
-            Debug.LogWarning("[调试] 警告：未找到 OVRHand 组件！手势追踪将无法使用。将尝试回退到手柄/鼠标。");
         }
     }
 
     public override void FixedUpdateNetwork()
     {
-        // 只有本地玩家执行检测
+        // 只有本地玩家能发起操作
         if (!Object.HasInputAuthority) return;
 
-        // 2. 检查 Prefab 是否赋值 (这是最常见的错误！)
-        if (FoodPrefab == null)
+        // 如果处于冷却中，直接跳过检测，节省性能
+        if (!SpawnCoolDown.ExpiredOrNotRunning(Runner)) return;
+
+        bool shouldSpawn = false;
+        Vector3 spawnPos = Vector3.zero;
+
+        // 1. 优先检测手势 (Quest 3 原生体验)
+        if (_localRightHand != null && _localRightHand.PointerPose != null)
         {
-            if (!_hasLoggedMissingPrefab)
+            bool isPinching = _localRightHand.GetFingerIsPinching(OVRHand.HandFinger.Index);
+
+            // 逻辑：按下的一瞬间触发 (Down)
+            if (isPinching && !_wasPinching)
             {
-                Debug.LogError("[调试] 严重错误：FoodPrefab 没赋值！请在 Inspector 里拖入 NetworkFood！");
-                _hasLoggedMissingPrefab = true;
+                shouldSpawn = true;
+                spawnPos = _localRightHand.PointerPose.position; // 指尖位置
             }
-            return;
+            _wasPinching = isPinching;
         }
-
-        // 3. 检测输入
-        bool inputActive = false;
-        string inputSource = "";
-
-        // A. 检测手势 (Pinch)
-        if (_localRightHand != null)
+        // 2. 其次检测手柄 (兼容模式)
+        else
         {
-            if (_localRightHand.GetFingerIsPinching(OVRHand.HandFinger.Index))
+            if (CheckVRTrigger())
             {
-                inputActive = true;
-                inputSource = "手势捏合";
-            }
-        }
-
-        // B. 检测手柄 (Trigger) - 通用 XR 方法
-        if (!inputActive)
-        {
-            var devices = new List<InputDevice>();
-            InputDevices.GetDevicesWithCharacteristics(InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller, devices);
-            if (devices.Count > 0)
-            {
-                devices[0].TryGetFeatureValue(CommonUsages.triggerButton, out bool triggerValue);
-                if (triggerValue)
-                {
-                    inputActive = true;
-                    inputSource = "手柄扳机";
-                }
+                shouldSpawn = true;
+                // 手柄通常在 Avatar 手部位置前方
+                spawnPos = transform.position + transform.forward * 0.3f;
             }
         }
 
-        // C. 检测鼠标 (PC调试用)
-        if (!inputActive && Input.GetMouseButton(0))
+        // 3. 最后检测鼠标 (PC 调试专用)
+        // 注意：Input.GetMouseButton 需要 Project Settings -> Player -> Active Input Handling 设为 Both
+        if (!shouldSpawn && Input.GetMouseButtonDown(0))
         {
-            inputActive = true;
-            inputSource = "鼠标左键";
+            shouldSpawn = true;
+            spawnPos = transform.position + transform.forward * 0.5f;
         }
 
-        // 4. 执行生成
-        if (inputActive)
+        // 执行生成
+        if (shouldSpawn && FoodPrefab != null)
         {
-            if (SpawnCoolDown.ExpiredOrNotRunning(Runner))
-            {
-                Debug.Log($"[调试] 检测到 {inputSource}！正在请求 RPC 生成食物...");
-
-                // 计算位置
-                Vector3 spawnPos = transform.position + transform.forward * 0.5f;
-                if (_localRightHand != null)
-                    spawnPos = _localRightHand.PointerPose.position;
-
-                RPC_RequestSpawnFood(spawnPos);
-
-                // 重置冷却 (本地稍微设置一下防止发太多 Log)
-                SpawnCoolDown = TickTimer.CreateFromSeconds(Runner, 0.5f);
-            }
-            else
-            {
-                // 冷却中，不打印日志，不然会刷屏
-            }
+            RPC_SpawnFood(spawnPos);
+            // 重置冷却
+            SpawnCoolDown = TickTimer.CreateFromSeconds(Runner, CooldownTime);
         }
     }
 
-    [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority)]
-    public void RPC_RequestSpawnFood(Vector3 spawnPos)
+    private bool CheckVRTrigger()
     {
-        Debug.Log("[调试] Host 收到 RPC 请求！正在生成 NetworkFood...");
-        Runner.Spawn(FoodPrefab, spawnPos, Quaternion.identity);
+        var devices = new List<InputDevice>();
+        InputDevices.GetDevicesWithCharacteristics(InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller, devices);
+        if (devices.Count > 0)
+        {
+            devices[0].TryGetFeatureValue(CommonUsages.triggerButton, out bool val);
+            // 这里用简单判断，如果是持续按下，依靠 Cooldown 来限制频率
+            return val;
+        }
+        return false;
+    }
+
+    [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority)]
+    public void RPC_SpawnFood(Vector3 pos)
+    {
+        Runner.Spawn(FoodPrefab, pos, Quaternion.identity);
     }
 }

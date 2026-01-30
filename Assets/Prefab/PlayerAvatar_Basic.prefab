@@ -275,6 +275,8 @@ GameObject:
   - component: {fileID: 4826314430461826444}
   - component: {fileID: 5913411562152344020}
   - component: {fileID: 2041501351879610110}
+  - component: {fileID: 2273915659053812497}
+  - component: {fileID: 5688435399057719140}
   m_Layer: 0
   m_Name: PlayerAvatar_Basic
   m_TagString: Player
@@ -398,6 +400,8 @@ MonoBehaviour:
   NetworkedBehaviours:
   - {fileID: 5913411562152344020}
   - {fileID: 2041501351879610110}
+  - {fileID: 2273915659053812497}
+  - {fileID: 5688435399057719140}
   - {fileID: 1429704091392461430}
   - {fileID: 7079506277639984512}
   ForceRemoteRenderTimeframe: 0
@@ -428,3 +432,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerActions
   FoodPrefab: {fileID: 4700200673722861814, guid: 8050a74f49e32f144b3015f8b26e0b41, type: 3}
+--- !u!114 &2273915659053812497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8816320102321210441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8fa7430d2a5622418185351bceb2759, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AvatarMovement
+--- !u!114 &5688435399057719140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8816320102321210441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fusion.Runtime.dll::Fusion.NetworkTransform
+  _stateAuthorityChangeErrorCorrectionDelta: 0
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0
