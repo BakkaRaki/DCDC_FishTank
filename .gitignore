@@ -73,3 +73,9 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# 忽略 IL2CPP 备份文件夹
+/DCDCFishTank_BackUpThisFolder_ButDontShipItWithYourGame/
+
+# 忽略所有以该后缀结尾的文件夹
+*_BackUpThisFolder_ButDontShipItWithYourGame/
