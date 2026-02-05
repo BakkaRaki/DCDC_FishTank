@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 919833319855107491}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.318, z: 0.738}
+  m_LocalPosition: {x: 0.734, y: 0.318, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -159,7 +159,7 @@ Transform:
   m_GameObject: {fileID: 6302222214673746468}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.318, z: -0.734}
+  m_LocalPosition: {x: -0.74, y: 0.318, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -432,6 +432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerActions
   FoodPrefab: {fileID: 4700200673722861814, guid: 8050a74f49e32f144b3015f8b26e0b41, type: 3}
+  CooldownTime: 0.5
 --- !u!114 &2273915659053812497
 MonoBehaviour:
   m_ObjectHideFlags: 0
