@@ -9,6 +9,10 @@ public class AquariumManager : SimulationBehaviour, IPlayerJoined
 
     [Header("Spawning")]
     public NetworkObject FishPrefab;
+
+    // [新增] 环境系统的预制体槽位
+    public NetworkObject EnvironmentPrefab;
+
     public int FishCount = 20;
 
     private bool _hasSpawned = false;
@@ -17,25 +21,25 @@ public class AquariumManager : SimulationBehaviour, IPlayerJoined
     {
         if (Runner.IsServer && !_hasSpawned)
         {
-            SpawnFishSchool();
+            SpawnContent(); // 改个名，统一管理
             _hasSpawned = true;
         }
     }
 
-    void SpawnFishSchool()
+    void SpawnContent()
     {
-        AllBoids.Clear();
-        Debug.Log($"[Aquarium] Spawning {FishCount} fishes...");
+        // 1. 生成环境系统 (只生成 1 个)
+        if (EnvironmentPrefab != null)
+        {
+            Runner.Spawn(EnvironmentPrefab, Vector3.zero, Quaternion.identity);
+            Debug.Log("[Aquarium] Environment System Spawned.");
+        }
 
+        // 2. 生成鱼群
+        Debug.Log($"[Aquarium] Spawning {FishCount} fishes...");
         for (int i = 0; i < FishCount; i++)
         {
-            // [修改] 扩大生成半径到 4.0f，让它们散布在整个房间
             Vector3 randomPos = new Vector3(0, 1.5f, 1) + Random.insideUnitSphere * 4.0f;
-
-            // [可选] 也可以分成两拨生成
-            if (i % 2 == 0) randomPos += Vector3.right * 2;
-            else randomPos -= Vector3.right * 2;
-
             Quaternion randomRot = Random.rotation;
             Runner.Spawn(FishPrefab, randomPos, randomRot, null);
         }

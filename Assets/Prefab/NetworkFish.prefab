@@ -91,6 +91,9 @@ MonoBehaviour:
   CohesionWeight: 0.2
   BoundsWeight: 1.5
   VisionRadius: 0.9
+  FoodWeight: 3
+  ScareWeight: 5
+  ScareRadius: 0.8
 --- !u!1001 &215004416343150072
 PrefabInstance:
   m_ObjectHideFlags: 0

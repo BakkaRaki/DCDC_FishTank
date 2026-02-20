@@ -86,6 +86,19 @@ public class SimpleBoid : NetworkBehaviour
         int neighborCount = 0;
         Vector3 averagePosition = Vector3.zero;
 
+        // 获取环境数据
+        var env = FindFirstObjectByType<EnvironmentSystem>();
+        if (env != null)
+        {
+            // 温度影响速度：水温越高，鱼越活跃；太冷则冻僵
+            float tempFactor = Mathf.InverseLerp(0, 40, env.Temperature); // 0~1
+
+            // 正常速度 * 温度系数 (0.5倍 ~ 2.0倍)
+            float currentSpeed = Speed * (0.5f + tempFactor * 1.5f);
+
+            transform.position += transform.forward * currentSpeed * Runner.DeltaTime;
+        }
+
         // --- 新增逻辑 1：寻找食物 (Attraction) ---
         Vector3 foodSteer = Vector3.zero;
         // 简单粗暴：找场景里所有的 Food
