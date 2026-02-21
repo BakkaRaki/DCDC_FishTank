@@ -1345,8 +1345,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8371,7 +8371,6 @@ GameObject:
   - component: {fileID: 1485304657}
   - component: {fileID: 1485304656}
   - component: {fileID: 1485304662}
-  - component: {fileID: 1485304661}
   m_Layer: 5
   m_Name: GameCanvas
   m_TagString: Untagged
@@ -8482,25 +8481,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 1.396}
   m_SizeDelta: {x: 366, y: 463}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1485304661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1485304655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Fusion.Runtime.dll::Fusion.NetworkObject
-  SortKey: 3367084032
-  ObjectInterest: 1
-  Flags: 262145
-  NestedObjects: []
-  NetworkedBehaviours:
-  - {fileID: 1485304662}
-  ForceRemoteRenderTimeframe: 0
 --- !u!114 &1485304662
 MonoBehaviour:
   m_ObjectHideFlags: 0
