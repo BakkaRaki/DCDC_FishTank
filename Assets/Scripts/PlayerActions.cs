@@ -14,25 +14,28 @@ public class PlayerActions : NetworkBehaviour
     // 本地缓存
     private OVRHand _localRightHand;
     private bool _wasPinching = false;
+    private Transform _cameraTransform;
 
     public override void Spawned()
     {
         if (Object.HasInputAuthority)
         {
             FindLocalHand();
+            // 务必找到 MainCamera
+            if (Camera.main != null) _cameraTransform = Camera.main.transform;
         }
     }
 
     void FindLocalHand()
     {
-        // 尝试寻找右手的 OVRHand 组件
         var hands = FindObjectsByType<OVRHand>(FindObjectsSortMode.None);
         foreach (var hand in hands)
         {
-            // 依然保持大写 P 的修复
+            // 修复：确保 PointerPose 不为空再赋值，否则赋值了也没用
             if (hand.PointerPose != null && (hand.name.Contains("Right") || hand.PointerPose.name.Contains("Right")))
             {
                 _localRightHand = hand;
+                Debug.Log($"[PlayerActions] Found Right Hand: {hand.name}");
                 break;
             }
         }
@@ -40,51 +43,68 @@ public class PlayerActions : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
-        // 只有本地玩家能发起操作
+        // 只有本地玩家能操作
         if (!Object.HasInputAuthority) return;
 
-        // 如果处于冷却中，直接跳过检测，节省性能
+        // 冷却检测
         if (!SpawnCoolDown.ExpiredOrNotRunning(Runner)) return;
 
         bool shouldSpawn = false;
-        Vector3 spawnPos = Vector3.zero;
+        Vector3 finalSpawnPos = Vector3.zero; // 初始化为 0
 
-        // 1. 优先检测手势 (Quest 3 原生体验)
-        if (_localRightHand != null && _localRightHand.PointerPose != null)
+        // --- 1. 手势检测 (Pinch) ---
+        if (_localRightHand != null && _localRightHand.IsTracked && _localRightHand.PointerPose != null)
         {
             bool isPinching = _localRightHand.GetFingerIsPinching(OVRHand.HandFinger.Index);
 
-            // 逻辑：按下的一瞬间触发 (Down)
             if (isPinching && !_wasPinching)
             {
                 shouldSpawn = true;
-                spawnPos = _localRightHand.PointerPose.position; // 指尖位置
+                finalSpawnPos = _localRightHand.PointerPose.position;
+                Debug.DrawLine(_localRightHand.PointerPose.position, _localRightHand.PointerPose.position + Vector3.up * 0.2f, Color.green, 2.0f);
             }
             _wasPinching = isPinching;
         }
-        // 2. 其次检测手柄 (兼容模式)
-        else
+
+        // --- 2. 手柄/鼠标/Avatar 回退检测 ---
+        // 如果手势没触发，检查其他输入
+        if (!shouldSpawn)
         {
-            if (CheckVRTrigger())
+            bool trigger = CheckVRTrigger();
+            bool mouse = Input.GetMouseButtonDown(0);
+
+            if (trigger || mouse)
             {
                 shouldSpawn = true;
-                // 手柄通常在 Avatar 手部位置前方
-                spawnPos = transform.position + transform.forward * 0.3f;
+                // 优先用摄像机（眼睛）位置
+                if (_cameraTransform != null)
+                {
+                    finalSpawnPos = _cameraTransform.position + _cameraTransform.forward * 0.5f;
+                }
+                // 实在不行用 Avatar 身体位置 (不推荐，容易偏)
+                else
+                {
+                    finalSpawnPos = transform.position + transform.forward * 0.5f;
+                }
             }
         }
 
-        // 3. 最后检测鼠标 (PC 调试专用)
-        // 注意：Input.GetMouseButton 需要 Project Settings -> Player -> Active Input Handling 设为 Both
-        if (!shouldSpawn && Input.GetMouseButtonDown(0))
+        // --- 3. 终极修正 (防止生成在世界原点) ---
+        if (shouldSpawn)
         {
-            shouldSpawn = true;
-            spawnPos = transform.position + transform.forward * 0.5f;
-        }
+            // 如果 finalSpawnPos 还是 (0,0,0)，说明上面的获取失败了
+            if (finalSpawnPos == Vector3.zero)
+            {
+                Debug.LogWarning("[PlayerActions] 算出的位置是 0！强制修正到摄像机前方！");
+                if (_cameraTransform != null)
+                    finalSpawnPos = _cameraTransform.position + _cameraTransform.forward * 0.5f;
+                else
+                    return; // 连摄像机都没有，那就不生成了，免得去原点
+            }
 
-        // 执行生成
-        if (shouldSpawn && FoodPrefab != null)
-        {
-            RPC_SpawnFood(spawnPos);
+            // 发送生成请求
+            RPC_SpawnFood(finalSpawnPos);
+
             // 重置冷却
             SpawnCoolDown = TickTimer.CreateFromSeconds(Runner, CooldownTime);
         }
@@ -97,7 +117,6 @@ public class PlayerActions : NetworkBehaviour
         if (devices.Count > 0)
         {
             devices[0].TryGetFeatureValue(CommonUsages.triggerButton, out bool val);
-            // 这里用简单判断，如果是持续按下，依靠 Cooldown 来限制频率
             return val;
         }
         return false;
@@ -106,6 +125,7 @@ public class PlayerActions : NetworkBehaviour
     [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority)]
     public void RPC_SpawnFood(Vector3 pos)
     {
+        // Host 收到位置，生成物体
         Runner.Spawn(FoodPrefab, pos, Quaternion.identity);
     }
 }
