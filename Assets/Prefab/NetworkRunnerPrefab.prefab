@@ -144,7 +144,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5340cf50b5037e443a9b7df7d8ae1204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AquariumManager
-  FishPrefab: {fileID: 3681311844758250167, guid: 0b27fb6bf85bc9240b6c3d557329b0f5, type: 3}
+  FishPrefabs:
+  - {fileID: 3681311844758250167, guid: 0b27fb6bf85bc9240b6c3d557329b0f5, type: 3}
+  - {fileID: 3681311844758250167, guid: 99b8b0115d899354ca868e86d7bea6a8, type: 3}
+  - {fileID: 3681311844758250167, guid: 3593f9031241ea1439690c15d68517fd, type: 3}
   EnvironmentPrefab: {fileID: 4451345771317058922, guid: 2b4c990de303d6f48afabddb0b809a85, type: 3}
   FishCount: 24
 --- !u!114 &5828808025553451093
