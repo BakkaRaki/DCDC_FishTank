@@ -57,7 +57,7 @@ This project aims to explore the application of **Digital Twin** technology with
 1. Clone this repository：
 
    ```
-   git clone https://github.com/YourUsername/MR-AquaTwin.git
+   git clone https://github.com/BakkaRaki/DCDC_FishTank.git
    ```
 
 2. Open the project in Unity
