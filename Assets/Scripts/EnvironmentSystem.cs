@@ -20,6 +20,8 @@ public class EnvironmentSystem : NetworkBehaviour
     private MeshRenderer _waterRenderer;
     private Material _waterMatInstance;
     private float _defaultAmbientIntensity;
+    // 在顶部增加变量
+    public ParticleSystem WaterParticles;
 
     public override void Spawned()
     {
@@ -37,6 +39,14 @@ public class EnvironmentSystem : NetworkBehaviour
                 _waterMatInstance = _waterRenderer.material;
             }
         }
+
+        // 在 Spawned() 里查找
+        if (WaterParticles == null)
+        {
+            GameObject pObj = GameObject.Find("WaterParticles");
+            if (pObj != null) WaterParticles = pObj.GetComponent<ParticleSystem>();
+        }
+
 
         // 初始化上一帧数据，强制更新一次画面
         _lastTemperature = -999f;
@@ -65,33 +75,55 @@ public class EnvironmentSystem : NetworkBehaviour
 
     private void UpdateVisuals()
     {
-        // A. 计算颜色
+        // 1. 计算基于温度的基础颜色 (0度蓝 -> 40度红)
+        // 注意：Alpha (透明度) 设为 0.3f 左右
         float t = Mathf.InverseLerp(0, 40, Temperature);
-        Color targetColor = Color.Lerp(new Color(0, 0.5f, 1f, 0.3f), new Color(1f, 0.2f, 0.2f, 0.4f), t);
+        Color baseColor = Color.Lerp(new Color(0, 0.5f, 1f, 0.3f), new Color(1f, 0.2f, 0.2f, 0.3f), t);
 
-        // B. 应用材质颜色
+        // 2. [关键修复] 将光照强度应用到颜色上
+        // 也就是说：最终颜色 = 基础颜色 * 光照强度
+        // 当 LightIntensity 为 0 时，finalColor 就会变成 (0,0,0,0) -> 完全看不见/黑色
+        Color finalColor = baseColor * LightIntensity;
+
+        // 保持 Alpha 值不要因为乘以 0 而完全消失（可选），或者让它跟着变黑
+        // 如果你希望变暗时水体依然有“介质感”，可以单独处理 Alpha
+        // finalColor.a = baseColor.a * (0.5f + 0.5f * LightIntensity); // 最暗也有 50% 透明度
+
+        // 3. 应用颜色到水体材质
         if (_waterMatInstance != null)
         {
             bool hasBaseColor = _waterMatInstance.HasProperty("_BaseColor");
             bool hasColor = _waterMatInstance.HasProperty("_Color");
 
-            if (hasBaseColor) _waterMatInstance.SetColor("_BaseColor", targetColor);
-            else if (hasColor) _waterMatInstance.SetColor("_Color", targetColor);
+            if (hasBaseColor) _waterMatInstance.SetColor("_BaseColor", finalColor);
+            else if (hasColor) _waterMatInstance.SetColor("_Color", finalColor);
         }
 
-        // C. 应用光照
+        // 4. 应用光照到灯光组件 (照亮鱼)
         if (_sceneLight != null)
         {
-            _sceneLight.color = targetColor;
+            // 灯光的颜色也应该随着变暗
+            _sceneLight.color = finalColor;
             _sceneLight.intensity = LightIntensity;
         }
 
-        // D. 应用环境光
+        // 5. 应用环境光 (让阴影部分也变黑)
         RenderSettings.ambientIntensity = _defaultAmbientIntensity * LightIntensity;
         if (RenderSettings.ambientMode == UnityEngine.Rendering.AmbientMode.Flat)
         {
             RenderSettings.ambientLight = Color.gray * LightIntensity;
         }
+
+        //Particles getting dark
+        if (WaterParticles != null)
+        {
+            var main = WaterParticles.main;
+            // 修改粒子的 StartColor
+            // 让粒子颜色也乘以光照强度
+            Color particleColor = new Color(1, 1, 1, 0.5f) * LightIntensity;
+            main.startColor = particleColor;
+        }
+
     }
 
     // UI 接口
