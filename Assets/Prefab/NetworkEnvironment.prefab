@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6950155377904353160}
   - component: {fileID: 122563659619721794}
   - component: {fileID: 4451345771317058922}
+  - component: {fileID: -7465785084551794434}
   m_Layer: 0
   m_Name: NetworkEnvironment
   m_TagString: Untagged
@@ -47,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnvironmentSystem
   _Temperature: 20
   _LightIntensity: 1
+  WaterParticles: {fileID: 0}
 --- !u!114 &4451345771317058922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,4 +67,22 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 122563659619721794}
+  - {fileID: -7465785084551794434}
   ForceRemoteRenderTimeframe: 0
+--- !u!114 &-7465785084551794434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2932155666856332790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6375b100153fab4c9154fffd1e04efa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SensorSimulator
+  Interval: 10
+  TempFluctuation: 2
+  TempLimits: {x: 10, y: 34}
+  LightFluctuation: 0.3
+  LightLimits: {x: 0.3, y: 1.5}
