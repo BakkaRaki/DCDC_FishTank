@@ -4,7 +4,7 @@
 
 This project aims to explore the application of **Digital Twin** technology within Mixed Reality (MR), combined with **Colocation** technology, enabling multiple users within the same physical space to jointly observe, feed, and manage a virtual ecosystem.
 
-![https://github.com/BakkaRaki/DCDC_FishTank/blob/3c091d12bd6bf195e9beae4c25267b749eb0c621/BANNER.png]()
+![https://github.com/BakkaRaki/DCDC_FishTank/blob/3c091d12bd6bf195e9beae4c25267b749eb0c621/BANNER.png](/BANNER.png)
 
 
 
