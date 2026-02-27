@@ -24,7 +24,7 @@ public class SimpleBoid : NetworkBehaviour
 
     // 鱼缸中心设置 (Day 2 的参数)
     private Vector3 _boundsCenter = new Vector3(0, 1.5f, 1);
-    private float _boundsRadius = 5f;
+    private float _boundsRadius = 4f;
     // 新增一个变量用于记录随机种子
     private float _randomOffset;
 

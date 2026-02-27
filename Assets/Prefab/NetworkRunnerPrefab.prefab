@@ -149,7 +149,7 @@ MonoBehaviour:
   - {fileID: 3681311844758250167, guid: 99b8b0115d899354ca868e86d7bea6a8, type: 3}
   - {fileID: 3681311844758250167, guid: 3593f9031241ea1439690c15d68517fd, type: 3}
   EnvironmentPrefab: {fileID: 4451345771317058922, guid: 2b4c990de303d6f48afabddb0b809a85, type: 3}
-  FishCount: 24
+  FishCount: 30
 --- !u!114 &5828808025553451093
 MonoBehaviour:
   m_ObjectHideFlags: 0

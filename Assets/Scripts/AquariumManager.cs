@@ -15,7 +15,7 @@ public class AquariumManager : SimulationBehaviour, IPlayerJoined
     public NetworkObject EnvironmentPrefab;
 
     [Tooltip("鱼的总数量，会随机分配到三种鱼上")]
-    public int FishCount = 20;
+    public int FishCount = 30;
 
     private bool _hasSpawned = false;
 

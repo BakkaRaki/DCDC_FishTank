@@ -4,13 +4,7 @@
 
 This project aims to explore the application of **Digital Twin** technology within Mixed Reality (MR), combined with **Colocation** technology, enabling multiple users within the same physical space to jointly observe, feed, and manage a virtual ecosystem.
 
-
-
-```
-![alt text](https://via.placeholder.com/1000x400?text=MR+Aquarium+Project+Screenshot)
-```
-
-
+![https://stockholmuniversity-my.sharepoint.com/:i:/g/personal/yoch3792_win_su_se/IQCg-jzaciuKR7zwOtYw19dtAfXKdv1f1Wu1fFuXLPC4QDo?e=U68Owg]()
 
 
 
