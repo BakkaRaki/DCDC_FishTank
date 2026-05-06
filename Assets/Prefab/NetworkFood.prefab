@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 4700200673722861814}
   - component: {fileID: 5698538108593656742}
   - component: {fileID: 2833982518470406705}
-  m_Layer: 0
+  - component: {fileID: 6666666666666666666}
+  m_Layer: 6
   m_Name: NetworkFood
   m_TagString: Food
   m_Icon: {fileID: 0}
@@ -164,3 +165,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba3982034b7e26b4ebc07d1bf8e7e1bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FoodLife
+--- !u!54 &6666666666666666666
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432869289710435486}
+  serializedVersion: 4
+  m_Mass: 0.02
+  m_Drag: 1
+  m_AngularDrag: 2
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 2
+  m_Constraints: 0
+  m_CollisionDetection: 3
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0

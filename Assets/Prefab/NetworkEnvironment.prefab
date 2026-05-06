@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 122563659619721794}
   - component: {fileID: 4451345771317058922}
   - component: {fileID: -7465785084551794434}
+  - component: {fileID: 7777777777777777777}
   m_Layer: 0
   m_Name: NetworkEnvironment
   m_TagString: Untagged
@@ -68,6 +69,7 @@ MonoBehaviour:
   NetworkedBehaviours:
   - {fileID: 122563659619721794}
   - {fileID: -7465785084551794434}
+  - {fileID: 7777777777777777777}
   ForceRemoteRenderTimeframe: 0
 --- !u!114 &-7465785084551794434
 MonoBehaviour:
@@ -86,3 +88,20 @@ MonoBehaviour:
   TempLimits: {x: 10, y: 34}
   LightFluctuation: 0.3
   LightLimits: {x: 0.3, y: 1.5}
+--- !u!114 &7777777777777777777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2932155666856332790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FishTankVolume
+  DefaultHalfExtents: {x: 0.4, y: 0.3, z: 0.3}
+  InitialDistanceFromCamera: 0.8
+  PinchHoldSeconds: 2
+  PlacementFinger: 2
+  GlassBoxVisual: {fileID: 0}
