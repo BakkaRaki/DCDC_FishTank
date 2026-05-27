@@ -528,6 +528,13 @@ public class PlayerActions : NetworkBehaviour
         // --- 3. ??????? (????????????????) ---
         if (shouldSpawn)
         {
+            if (!AquariumColocationGate.IsReady)
+            {
+                _wasPinching = currentPinch;
+                _wasTriggerPressed = currentTrigger;
+                return;
+            }
+
             // Fusion may run this callback twice in one tick; share dedupe across all PlayerActions instances.
             if (Runner.Tick == s_spawnConsumedTick && Runner.LocalPlayer == s_spawnConsumedPlayer)
             {

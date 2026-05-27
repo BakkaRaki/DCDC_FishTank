@@ -80,3 +80,7 @@ crashlytics-build.properties
 # 忽略所有以该后缀结尾的文件夹
 *_BackUpThisFolder_ButDontShipItWithYourGame/
 TempAssembly.dll
+
+# Unity Burst debug (do not ship)
+DCDC_FishTank_BurstDebugInformation_DoNotShip/
+

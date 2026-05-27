@@ -7,7 +7,7 @@ public class AvatarMovement : NetworkBehaviour
 
     public override void Spawned()
     {
-        // 1. Ö»ÓÐ¿Í»§¶Ë×Ô¼ºÐèÒª°ó¶¨ÉãÏñ»ú
+        // 1. Ö»ï¿½Ð¿Í»ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if (Object.HasInputAuthority)
         {
             if (Camera.main != null)
@@ -16,37 +16,40 @@ public class AvatarMovement : NetworkBehaviour
             }
             else
             {
-                Debug.LogError("ÕÒ²»µ½ MainCamera£¬Çë¼ì²é Tag£¡");
+                Debug.LogError("ï¿½Ò²ï¿½ï¿½ï¿½ MainCameraï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Tagï¿½ï¿½");
             }
         }
     }
 
     public override void FixedUpdateNetwork()
     {
-        // Ö»ÓÐÓµÓÐÊäÈëÈ¨ÏÞµÄÈË£¨Client ×Ô¼º£©Ö´ÐÐ
+        // Ö»ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¨ï¿½Þµï¿½ï¿½Ë£ï¿½Client ï¿½Ô¼ï¿½ï¿½ï¿½Ö´ï¿½ï¿½
         if (Object.HasInputAuthority && _headsetTransform != null)
         {
-            // A. ±¾µØÏÈ¶¯ÆðÀ´£¨±£Ö¤×Ô¼º¿´µ½µÄ»­ÃæÊÇÁ÷³©ÎÞÑÓ³ÙµÄ£©
+            if (!AquariumColocationGate.IsReady)
+                return;
+
+            // A. ï¿½ï¿½ï¿½ï¿½ï¿½È¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó³ÙµÄ£ï¿½
             transform.position = _headsetTransform.position;
             transform.rotation = _headsetTransform.rotation;
 
-            // B. [¹Ø¼üÐÞ¸´] ·¢ËÍ RPC ¸æËß Host ÎÒÔÚÄÄ
-            // Ê¹ÓÃ Unreliable Í¨µÀ£¬ÒòÎªÎ»ÖÃ¸üÐÂ·Ç³£Æµ·±£¬¶ªÒ»Á½°üÎÞËùÎ½£¬×·ÇóËÙ¶È
+            // B. [ï¿½Ø¼ï¿½ï¿½Þ¸ï¿½] ï¿½ï¿½ï¿½ï¿½ RPC ï¿½ï¿½ï¿½ï¿½ Host ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            // Ê¹ï¿½ï¿½ Unreliable Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªÎ»ï¿½Ã¸ï¿½ï¿½Â·Ç³ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î½ï¿½ï¿½×·ï¿½ï¿½ï¿½Ù¶ï¿½
             RPC_SendPosition(_headsetTransform.position, _headsetTransform.rotation);
         }
     }
 
-    // --- ÐÂÔö£ºRPC ¶¨Òå ---
-    // Source: InputAuthority (Client ·¢Æð)
-    // Target: StateAuthority (Host ½ÓÊÕ)
-    // Channel: Unreliable (²»±£Ö¤ËÍ´ï£¬µ«ËÙ¶È×î¿ì£¬ÊÊºÏÊµÊ±ÒÆ¶¯)
+    // --- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½RPC ï¿½ï¿½ï¿½ï¿½ ---
+    // Source: InputAuthority (Client ï¿½ï¿½ï¿½ï¿½)
+    // Target: StateAuthority (Host ï¿½ï¿½ï¿½ï¿½)
+    // Channel: Unreliable (ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½Í´ï£¬ï¿½ï¿½ï¿½Ù¶ï¿½ï¿½ï¿½ì£¬ï¿½Êºï¿½ÊµÊ±ï¿½Æ¶ï¿½)
     [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority, Channel = RpcChannel.Unreliable)]
     private void RPC_SendPosition(Vector3 pos, Quaternion rot)
     {
-        // Õâ¶Î´úÂëÖ»ÔÚ Host ÉÏÔËÐÐ
+        // ï¿½ï¿½Î´ï¿½ï¿½ï¿½Ö»ï¿½ï¿½ Host ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-        // Host ÊÕµ½×ø±êºó£¬¸üÐÂÎïÌåÎ»ÖÃ
-        // Host ¸üÐÂºó£¬NetworkTransform ×é¼þ»á×Ô¶¯°ÑÕâ¸öÐÂÎ»ÖÃÍ¬²½¸øËùÓÐÆäËû Client
+        // Host ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½ó£¬¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
+        // Host ï¿½ï¿½ï¿½Âºï¿½NetworkTransform ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Client
         transform.position = pos;
         transform.rotation = rot;
     }

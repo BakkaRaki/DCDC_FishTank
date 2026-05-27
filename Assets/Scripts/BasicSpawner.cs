@@ -18,19 +18,10 @@ public class BasicSpawner : SimulationBehaviour, IPlayerJoined
             // 在 (0,1,0) 的位置生成玩家，稍微错开一点避免重叠
             Vector3 spawnPosition = new Vector3(0, 1, 0) + Random.insideUnitSphere * 0.5f;
 
-            // Fusion 的生成命令
-            NetworkObject networkPlayer = Runner.Spawn(PlayerPrefab, spawnPosition, Quaternion.identity, player);
-
+            // Fusion 的生成命令（每个 PlayerRef 只能生成一次，否则会导致 InputAuthority/RPC 混乱）
             var obj = Runner.Spawn(PlayerPrefab, spawnPosition, Quaternion.identity, player);
-
-            if (obj != null)
-            {
-                Debug.Log($"[Spawner] SUCCESS! Object Spawned: {obj.Id}"); // <--- 加这句
-            }
-            else
-            {
-                Debug.LogError("[Spawner] FAILED! Runner.Spawn returned null."); // <--- 加这句
-            }
+            if (obj != null) Debug.Log($"[Spawner] SUCCESS! Object Spawned: {obj.Id}");
+            else Debug.LogError("[Spawner] FAILED! Runner.Spawn returned null.");
         }
     }
 }

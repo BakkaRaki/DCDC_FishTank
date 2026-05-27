@@ -20,6 +20,7 @@ public class FishTankVolume : NetworkBehaviour
     [Networked] public Quaternion Rotation { get; set; }
 
     private System.Action<MRUKRoom> _roomReadyHandler;
+    private bool _placedFromMruk;
 
     public static bool TryGetInstance(out FishTankVolume volume)
     {
@@ -45,17 +46,36 @@ public class FishTankVolume : NetworkBehaviour
 
             _roomReadyHandler = OnMRUKRoomReady;
             MRUKBootstrap.SubscribeRoomReady(_roomReadyHandler);
+            AquariumColocationGate.Ready += OnColocationReadyForPlacement;
+
+            if (AquariumColocationGate.IsReady)
+                TryPlaceFromCurrentRoom();
         }
     }
 
     public override void Despawned(NetworkRunner runner, bool hasState)
     {
         if (Instance == this) Instance = null;
+        AquariumColocationGate.Ready -= OnColocationReadyForPlacement;
         if (_roomReadyHandler != null)
         {
             MRUKBootstrap.UnsubscribeRoomReady(_roomReadyHandler);
             _roomReadyHandler = null;
         }
+    }
+
+    void OnColocationReadyForPlacement()
+    {
+        if (!Object.HasStateAuthority) return;
+        TryPlaceFromCurrentRoom();
+    }
+
+    void TryPlaceFromCurrentRoom()
+    {
+        if (_placedFromMruk) return;
+        var room = MRUK.Instance != null ? MRUK.Instance.GetCurrentRoom() : MRUKBootstrap.LastLoadedRoom;
+        if (room != null)
+            OnMRUKRoomReady(room);
     }
 
     public override void FixedUpdateNetwork()
@@ -84,6 +104,7 @@ public class FishTankVolume : NetworkBehaviour
     private void OnMRUKRoomReady(MRUKRoom room)
     {
         if (!Object.HasStateAuthority || room == null) return;
+        if (!AquariumColocationGate.IsReady) return;
 
         // Keep a reasonable default placement on real furniture so the aquarium is visible,
         // but fish bounds are now handled by MRUK room bounds in SimpleBoid.
@@ -135,6 +156,7 @@ public class FishTankVolume : NetworkBehaviour
                 Mathf.Min(DefaultHalfExtents.z, Mathf.Max(0.2f, Mathf.Abs(size.y) * 0.45f)));
         }
 
+        _placedFromMruk = true;
         Debug.Log($"[FishTankVolume] Placed tank on MRUK anchor: {anchor.Label}");
     }
 }

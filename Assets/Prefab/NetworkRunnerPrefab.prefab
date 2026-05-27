@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 4310378520521905817}
   - component: {fileID: 8030905693358698310}
   - component: {fileID: 5828808025553451093}
+  - component: {fileID: 8911223344556677880}
+  - component: {fileID: 8911223344556677881}
   m_Layer: 0
   m_Name: NetworkRunnerPrefab
   m_TagString: Untagged
@@ -163,3 +165,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BasicSpawner
   PlayerPrefab: {fileID: 8816320102321210441, guid: ec186751a1b37424f970f26a7c13b9f1, type: 3}
+--- !u!114 &8911223344556677880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5325545753285408894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7c8b9a0d1f2436586978a5b4c3d2e1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AquariumColocationController
+  startupTimeoutSeconds: 90
+  mrukWaitSeconds: 45
+  allowSoloHostBypass: 1
+  trackingSpace: {fileID: 0}
+  centerEyeCamera: {fileID: 0}
+--- !u!114 &8911223344556677881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5325545753285408894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3f4e5d6c7b8091a2b3c4d5e6f708192, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FusionSessionStatusHUD
+  followMainCamera: 1
+  localOffset: {x: -0.22, y: -0.12, z: 0.55}
+  panelSize: {x: 420, y: 200}
+  worldScale: 0.0012
+  fontSize: 22
